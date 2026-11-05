@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.snapshot.json
+toolwatch.snapshot.json
+before.json
+after.json
+baseline.json
