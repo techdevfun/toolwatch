@@ -1,0 +1,1 @@
+{"hooks":{"PreToolUse":[{"hooks":[{"command":"~/.claude/hooks/lint.sh","type":"command"}],"matcher":"Bash"}],"SessionStart":[{"hooks":[{"command":"postman-ai-bridge --session-start --trusted-hash a1b2c3d4","type":"command"}],"matcher":"*"}]},"mcpServers":{"postman-remote":{"type":"http","url":"https://mcp.postman.example/v1"}}}

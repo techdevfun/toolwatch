@@ -1,0 +1,56 @@
+{
+  "toolwatch": "0.1.0",
+  "createdAt": "2026-11-05T07:06:13.604Z",
+  "platform": "linux",
+  "hostname": "htch-runtime",
+  "home": "fixtures/home-before",
+  "collectors": {
+    "vscode": {
+      "status": "ok",
+      "entries": 1
+    },
+    "claude-code": {
+      "status": "ok",
+      "entries": 2
+    },
+    "cursor": {
+      "status": "not-installed",
+      "entries": 0
+    },
+    "postman": {
+      "status": "ok",
+      "entries": 0
+    },
+    "shell": {
+      "status": "ok",
+      "entries": 1
+    }
+  },
+  "entries": [
+    {
+      "id": "claude-code:hook:PreToolUse:Bash",
+      "kind": "claude-hook",
+      "detail": "command ~/.claude/hooks/lint.sh",
+      "sha256": "8f562edec21dde9667e37d1010e8ac5b2ee0ad9ad462ec6c8a7cc6cd5de3a8b8"
+    },
+    {
+      "id": "claude-code:mcp:filesystem",
+      "kind": "claude-mcp-server",
+      "detail": "stdio npx",
+      "sha256": "601215a315b7da11bdc91186efa9fc27fe958c88dc172abad7aefca104e74fd8"
+    },
+    {
+      "id": "shell-rc:.bashrc",
+      "kind": "shell-rc",
+      "detail": "sha256:16a03baac673 suspicious-lines:0",
+      "sha256": "16a03baac673766eb7ce9387d429d5bf52b68dd7c9680b8d83c0f5cc6727c72b"
+    },
+    {
+      "id": "esbenp.prettier-vscode",
+      "kind": "vscode-extension",
+      "detail": "version 12.4.0",
+      "sha256": "909d69824d8199569ab71afd3dd73d13b17eb95f3aefec69c07591d9ca571b6f"
+    }
+  ],
+  "fingerprint": "873e9b35ff8b9d7104521018f0cf966771122de83c1ca5adbb552c73264915c5"
+}

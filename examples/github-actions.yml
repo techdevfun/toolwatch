@@ -1,0 +1,22 @@
+# Fail the build when the runner's dev-tool trust surface drifts from baseline.
+# Commit a baseline.json from a known-good machine, then run this job on
+# self-hosted runners (or a dev machine) after tool updates.
+name: trust-surface check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 9 * * 1" # Mondays 09:00 UTC — after the weekend's updates
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+      - run: npm ci
+      - run: npm run build
+      - name: Check trust surface against baseline
+        run: node dist/cli.js check --baseline baseline.json

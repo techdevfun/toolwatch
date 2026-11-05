@@ -1,0 +1,39 @@
+$ toolwatch snapshot --out before.json --home fixtures/home-before
+snapshot 873e9b35ff8b — 4 entries, 2026-11-05T07:04:37.642Z
+  vscode       ok            1 entries
+  claude-code  ok            2 entries
+  cursor       not-installed 0 entries
+  postman      ok            0 entries
+  shell        ok            1 entries
+wrote before.json
+
+$ # Postman 12.33.4 "updates" in the background: plugins + hook + remote MCP
+
+$ toolwatch snapshot --out after.json --home fixtures/home-after
+snapshot 01e5e2b3417d — 9 entries, 2026-11-05T07:04:37.807Z
+  vscode       ok            1 entries
+  claude-code  ok            5 entries
+  cursor       not-installed 0 entries
+  postman      ok            2 entries
+  shell        ok            1 entries
+wrote after.json
+
+$ toolwatch diff before.json after.json
++ ADDED   claude-hook          claude-code:hook:SessionStart:*
+           command postman-ai-bridge --session-start --trusted-hash a1b2c3d4
++ ADDED   claude-mcp-server    claude-code:mcp:postman-remote
+           http https://mcp.postman.example
++ ADDED   postman-plugin       postman:plugin:claude-code
+           version 1.0.0 · dir .config/Postman/plugins
++ ADDED   postman-plugin       postman:plugin:codex
+           version 1.0.0 · dir .config/Postman/plugins
++ ADDED   remote-endpoint      endpoint:https://mcp.postman.example
+           via claude-code mcp server "postman-remote" (http)
+~ CHANGED vscode-extension     esbenp.prettier-vscode
+           version 12.4.0
+        -> version 12.5.0
+
+6 change(s): 5 added, 1 changed, 0 removed.
+
+DRIFT: 6 trust-relevant change(s) — review, then re-baseline with 'toolwatch snapshot'.
+exit: 1
