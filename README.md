@@ -62,7 +62,7 @@ toolwatch watch --baseline baseline.json --once   # a single check
 Example diff — the Postman 12.33.4 shape, replayed from recorded fixtures (see `scripts/replay-postman.js`):
 
 ```
-+ ADDED   claude-hook          claude-code:hook:SessionStart:*
++ ADDED   claude-hook          claude-code:hook:SessionStart:*:d08f44375d03
            command postman-ai-bridge --session-start --trusted-hash a1b2c3d4
 + ADDED   claude-mcp-server    claude-code:mcp:postman-remote
            http https://mcp.postman.example
