@@ -19,7 +19,7 @@ snapshot 01e5e2b3417d — 9 entries, 2026-11-05T07:04:37.807Z
 wrote after.json
 
 $ toolwatch diff before.json after.json
-+ ADDED   claude-hook          claude-code:hook:SessionStart:*
++ ADDED   claude-hook          claude-code:hook:SessionStart:*:d08f44375d03
            command postman-ai-bridge --session-start --trusted-hash a1b2c3d4
 + ADDED   claude-mcp-server    claude-code:mcp:postman-remote
            http https://mcp.postman.example
