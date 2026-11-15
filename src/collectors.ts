@@ -163,7 +163,14 @@ function vscodeCollector(home: string): CollectorResult {
   return { name: "vscode", status: "ok", entries };
 }
 
-/** Parse Claude Code hooks from a settings.json object into entries. */
+/** Parse Claude Code hooks from a settings.json object into entries.
+ * One entry per hook COMMAND: the id carries a short hash of the command,
+ * because several commands can share one event+matcher and an id of
+ * event+matcher alone would make them collide — diffSnapshots keys by
+ * kind+id, so a silently added second command under the same matcher
+ * collapsed into the first and could pass the CI gate undetected
+ * (order-dependent: invisible when listed before the original command).
+ */
 export function parseClaudeHooks(settings: Record<string, unknown>): Entry[] {
   const entries: Entry[] = [];
   const hooks = settings.hooks as Record<string, unknown> | undefined;
@@ -180,7 +187,7 @@ export function parseClaudeHooks(settings: Record<string, unknown>): Entry[] {
         const command = typeof hook.command === "string" ? hook.command : "";
         const type = typeof hook.type === "string" ? hook.type : "command";
         entries.push({
-          id: `claude-code:hook:${event}:${pattern}`,
+          id: `claude-code:hook:${event}:${pattern}:${shortHash(sha256(command))}`,
           kind: "claude-hook",
           detail: `${type} ${command.slice(0, 200)}`,
           sha256: sha256(command),
