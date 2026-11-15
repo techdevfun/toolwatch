@@ -16,7 +16,9 @@ it does not know. Shell startup files are hashed, never copied.
 
 - `~/.claude.json` — top-level `mcpServers`.
 - `~/.claude/settings.json` — `hooks` (event → matcher → command) and
-  `mcpServers`.
+  `mcpServers`. Each hook command is its own entry: the entry id carries
+  a short hash of the command, so two commands under one event+matcher
+  diff as separate entries instead of collapsing onto one id.
 - `~/.claude/plugins/<marketplace>/<plugin>/.claude-plugin/plugin.json`
   — plugin name + version.
 
