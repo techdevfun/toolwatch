@@ -20,7 +20,7 @@ export type EntryKind =
   | "remote-endpoint";
 
 export interface Entry {
-  /** Stable identity, e.g. "esbenp.prettier-vscode" or "claude-code:hook:SessionStart". Version lives in detail/hash, so a bump diffs as CHANGED. */
+  /** Stable identity, e.g. "esbenp.prettier-vscode" or "claude-code:hook:SessionStart:*:d08f44375d03". Version lives in detail/hash, so a bump diffs as CHANGED. Hook ids carry a short command hash so two commands under one event+matcher are distinct entries. */
   id: string;
   kind: EntryKind;
   /** Short human-readable detail (never a secret, never a full URL with credentials). */
