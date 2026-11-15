@@ -25,7 +25,7 @@ const changes = diffSnapshots(before, after);
 const mustFind = [
   ["added", "postman-plugin", "postman:plugin:claude-code"],
   ["added", "postman-plugin", "postman:plugin:codex"],
-  ["added", "claude-hook", "claude-code:hook:SessionStart:*"],
+  ["added", "claude-hook", "claude-code:hook:SessionStart:*:d08f44375d03"],
   ["added", "remote-endpoint", "endpoint:https://mcp.postman.example"],
   ["changed", "vscode-extension", "esbenp.prettier-vscode"],
 ];
